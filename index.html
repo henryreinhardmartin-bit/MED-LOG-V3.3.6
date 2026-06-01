@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Gesundheits-Tracker V3.0</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2966/2966327.png">
+    <link rel="manifest" href="./manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body class="bg-gray-100 text-gray-900 overflow-x-hidden">
+    <div id="root">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; font-weight: bold; color: #1e3a8a;">
+            Lade Gesundheits-Tracker...
+        </div>
+    </div>
+    <script>
+        // Bereinigung alter Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    registration.unregister().then(() => {
+                        console.log('SW unregistered');
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
